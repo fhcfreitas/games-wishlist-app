@@ -3,8 +3,8 @@
 <%= render @game %>
 
 <div>
-  <%= link_to "Edit this game", edit_admin_game_path(@game) %> |
-  <%= link_to "Back to games", admin_games_path %>
-
-  <%= button_to "Destroy this game", @game, method: :delete %>
+  <%= link_to "Edit this game", edit_admin_game_path(@game), class: "btn btn-primary" %> |
+  <%= link_to "Back to games", admin_games_path, class: "btn btn-secondary" %>
+  <%= button_to "Delete this game", [:admin, @game], method: :delete,
+                data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 </div>

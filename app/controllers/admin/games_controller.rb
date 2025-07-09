@@ -46,7 +46,7 @@ class Admin::GamesController < ApplicationController
     @game_repository.destroy(@game)
 
     respond_to do |format|
-      format.html { redirect_to games_path, status: :see_other, notice: "Game was successfully destroyed." }
+      format.html { redirect_to admin_games_path, status: :see_other, notice: "Game was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -58,7 +58,7 @@ class Admin::GamesController < ApplicationController
   end
 
   def set_game
-    @game = @game_repository.find(params.expect(:id))
+    @game = @game_repository.find(params[:id])
   end
 
   def game_params

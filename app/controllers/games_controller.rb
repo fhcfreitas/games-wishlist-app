@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :initialize_repository
-  before_action :set_game, only: %i[ show ]
+  before_action :set_game, only: %i[ show destroy ]
 
   def index
     @games = @game_repository.all
@@ -10,12 +10,13 @@ class GamesController < ApplicationController
   end
 
   private
+
   def initialize_repository
     @game_repository = GamesRepository.new
   end
 
   def set_game
-    @game = @game_repository.find(params.expect(:id))
+    @game = @game_repository.find(params[:id])
   end
 
   def game_params
