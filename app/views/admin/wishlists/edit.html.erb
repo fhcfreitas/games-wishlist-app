@@ -1,0 +1,10 @@
+<h1>Editar Wishlist</h1>
+
+<%= form_with model: [@user, @wishlist] do |f| %>
+  <%= f.label :nome %>
+  <%= f.text_field :nome %>
+
+  <%= f.submit "Salvar" %>
+<% end %>
+
+<%= link_to "Voltar", user_wishlists_path(@user) %>

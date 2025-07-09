@@ -3,6 +3,8 @@
 <% content_for :title, "Games" %>
 
 <h1>Games</h1>
+<%= link_to "Usuários", users_path %> |
+<%= link_to "Acessar Admin", admin_games_path %>
 
 <div id="games">
   <% @games.each do |game| %>
@@ -12,5 +14,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New game", new_game_path %>

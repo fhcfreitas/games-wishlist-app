@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-  resources :games
-  resources :users do
-    resources :wishlists do
+  resources :games, only: [:index, :show]
+
+  resources :users, except: [:destroy] do
+    resources :wishlists, except: [:destroy] do
       resources :wishilist_items, only: [:create, :destroy]
     end
+  end
+
+  namespace :admin do
+    resources :users
+    resources :games
+    resources :wishlists
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

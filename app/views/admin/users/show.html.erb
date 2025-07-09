@@ -16,4 +16,6 @@
   <% else %>
     <p>Este usuário ainda não possui wishlists.</p>
   <% end %>
+
+  <%= button_to "Destroy this user", @user, method: :delete %>
 </div>

@@ -1,0 +1,15 @@
+<h1>Wishlists de <%= @user.name %></h1>
+
+<%= link_to "Nova Wishlist", new_user_wishlist_path(@user) %>
+
+<ul>
+  <% @wishlists.each do |wishlist| %>
+    <li>
+      <%= link_to wishlist.nome, user_wishlist_path(@user, wishlist) %>
+      |
+      <%= link_to "Editar", edit_user_wishlist_path(@user, wishlist) %>
+      |
+      <%= link_to "Excluir", user_wishlist_path(@user, wishlist), method: :delete, data: { confirm: "Tem certeza?" } %>
+    </li>
+  <% end %>
+</ul>

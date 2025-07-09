@@ -1,0 +1,20 @@
+<h1><%= @wishlist.nome %></h1>
+<p>Dono: <%= @wishlist.user.name %></p>
+
+<h2>Jogos nessa lista:</h2>
+<ul>
+  <% @wishlist.games.each do |game| %>
+    <li>
+      <%= game.name %>
+      <%= link_to "Remover", user_wishlist_wishilist_item_path(@wishlist.user, @wishlist, game_id: game.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<h3>Adicionar novo jogo</h3>
+<%= form_with url: user_wishlist_wishilist_items_path(@wishlist.user, @wishlist), method: :post do %>
+  <%= select_tag :game_id, options_from_collection_for_select(Game.all, :id, :name) %>
+  <%= submit_tag "Adicionar" %>
+<% end %>
+
+<%= link_to "Voltar", user_wishlists_path(@wishlist.user) %>

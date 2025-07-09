@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Games" %>
+
+<h1>Games::Admin</h1>
+<%= link_to "Usuários", admin_users_path %> |
+<%= link_to "Acessar Perfil Usuario", games_path %>
+
+<div id="games">
+  <% @games.each do |game| %>
+    <%= render game %>
+    <p>
+      <%= link_to "Show this game", admin_game_path(game) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New game", new_admin_game_path %>
