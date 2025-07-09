@@ -1,4 +1,7 @@
 class Game < ApplicationRecord
+  has_many :wishilist_items, dependent: :destroy
+  has_many :wishlists, through: :wishilist_items
+
   validates :name, presence: true
   validates :publisher, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }

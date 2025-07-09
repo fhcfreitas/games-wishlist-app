@@ -4,7 +4,18 @@
 
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
+  <%= link_to "Back to users", users_path %>  |
+  <%= link_to "Create a wishlist", new_user_wishlist_path(@user) %>
+  <% if @user.wishlists.any? %>
+    <h2>Listas existentes:</h2>
+    <ul>
+      <% @user.wishlists.each do |wishlist| %>
+        <li><%= link_to wishlist.nome, user_wishlist_path(@user, wishlist) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Este usuário ainda não possui wishlists.</p>
+  <% end %>
 
   <%= button_to "Destroy this user", @user, method: :delete %>
 </div>

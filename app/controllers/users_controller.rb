@@ -52,10 +52,10 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @user = User.find(params.expect(:id))
+      @user = User.includes(:wishlists).find(params[:id])
     end
 
     def user_params
-      params.expect(user: [ :name, :email ])
+      params.require(:user).permit(:name, :email)
     end
 end
