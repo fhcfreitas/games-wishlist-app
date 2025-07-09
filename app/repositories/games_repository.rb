@@ -24,7 +24,7 @@ class GamesRepository
   end
 
   def destroy(record)
-    record.destroy!
+    record.soft_delete
   end
 
   def find_by_name(name)

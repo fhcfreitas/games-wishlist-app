@@ -1,4 +1,6 @@
 class Game < ApplicationRecord
+  include SoftDeletable
+
   has_many :wishilist_items, dependent: :destroy
   has_many :wishlists, through: :wishilist_items
 
