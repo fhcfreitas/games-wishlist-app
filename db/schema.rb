@@ -30,13 +30,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_09_003900) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "wishilist_items", force: :cascade do |t|
+  create_table "wishlist_items", force: :cascade do |t|
     t.bigint "wishlist_id", null: false
     t.bigint "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_wishilist_items_on_game_id"
-    t.index ["wishlist_id"], name: "index_wishilist_items_on_wishlist_id"
+    t.index ["game_id"], name: "index_wishlist_items_on_game_id"
+    t.index ["wishlist_id", "game_id"], name: "index_wishlist_items_on_wishlist_id_and_game_id", unique: true
+    t.index ["wishlist_id"], name: "index_wishlist_items_on_wishlist_id"
   end
 
   create_table "wishlists", force: :cascade do |t|
@@ -47,7 +48,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_09_003900) do
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
-  add_foreign_key "wishilist_items", "games"
-  add_foreign_key "wishilist_items", "wishlists"
+  add_foreign_key "wishlist_items", "games"
+  add_foreign_key "wishlist_items", "wishlists"
   add_foreign_key "wishlists", "users"
 end
