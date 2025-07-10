@@ -3,7 +3,6 @@ module SoftDeletable
 
   included do
     scope :active, -> { where(active: true) }
-    default_scope { active }
   end
 
   def soft_delete

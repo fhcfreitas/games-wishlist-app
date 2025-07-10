@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :initialize_repository
-  before_action :set_game, only: %i[ show destroy ]
+  before_action :set_game, only: %i[ show ]
 
   def index
     @games = @game_repository.all

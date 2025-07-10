@@ -1,6 +1,8 @@
+require_relative '../queries/active_games_query'
+
 class GamesRepository
   def all
-    Game.all
+    ActiveGamesQuery.call
   end
 
   def new(attributes = {})
