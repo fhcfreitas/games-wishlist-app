@@ -16,12 +16,16 @@ Este é um projeto desenvolvido como parte do curso de Ruby on Rails. O objetivo
 ## 🚀 Como rodar o projeto localmente
 
 ```bash
-# Clone o repositório
-git clone https://github.com/fhcfreitas/games-wishlist-app.git
-cd games-wishlist-app
+# Instale as dependências
+bundle install
 
-# abra o VSCode
-# Inicie o projeto dentro do dev container
+# Configure o banco de dados
+rails db:create     # Cria o banco de dados
+rails db:migrate    # Executa as migrações
+rails db:seed       # Popula o banco com dados iniciais (seeds)
+
+# Inicie o servidor
+rails server
 ```
 
 ## ✅ Funcionalidades implementadas
